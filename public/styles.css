@@ -1,0 +1,118 @@
+@charset "UTF-8";
+@font-face {
+  font-family: "zans";
+  src: url('https://lowkey.link/fonts/Open_Sans/static/OpenSans-Regular.ttf');
+  src: url('https://lowkey.link/fonts/Open_Sans/static/OpenSans-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: "zerif";
+  src: url('https://lowkey.link/fonts/PT_Serif/PTSerif-Regular.ttf');
+  src: url('https://lowkey.link/fonts/PT_Serif/PTSerif-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: "zvt";
+  src: url('https://lowkey.link/fonts/VT323/VT323-Regular.ttf');
+  src: url('https://lowkey.link/fonts/VT323/VT323-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: "zlato";
+  src: url('https://lowkey.link/fonts/Lato/Lato-Regular.ttf');
+  src: url('https://lowkey.link/fonts/Lato/Lato-Regular.ttf') format('truetype');
+}
+    @font-face {
+        font-family: "zlato-thin";
+        src: url('https://lowkey.link/fonts/Lato/Lato-Thin.ttf');
+        src: url('https://lowkey.link/fonts/Lato/Lato-Thin.ttf') format('truetype');
+    }
+    @font-face {
+        font-family: "zlato-light";
+        src: url('https://lowkey.link/fonts/Lato/Lato-Light.ttf');
+        src: url('https://lowkey.link/fonts/Lato/Lato-Light.ttf') format('truetype');
+    }
+@font-face {
+  font-family: "zmulish";
+  src: url('https://lowkey.link/fonts/Mulish/Mulish-VariableFont_wght.ttf');
+  src: url('https://lowkey.link/fonts/Mulish/Mulish-VariableFont_wght.ttf') format('truetype');
+}
+
+body {
+    font-family: zerif, zans, Arial, Helvetica, sans-serif;
+    font-size: 1.0em;
+}
+
+.console, .font-monospace, .zvt {
+    font-family: zvt, zmulish, Arial, Helvetica, sans-serif;
+}
+/* pre {
+    font-family: zlato;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: zlato-thin;
+    font-variant: small-caps;
+} */
+/* label {
+    font-family: zlato-light;
+    font-variant: small-caps;
+} */
+.sc {
+    font-variant: small-caps;
+}
+.sz16 {
+    font-size: 1.20em;
+}
+.sz {
+    font-size: 1.0em;
+}
+.szsm {
+    font-size: 0.66em;
+}
+
+/**
+ * google fonts
+ */
+/** Mulish, zmulish
+ * <uniquifier>: Use a unique and descriptive class name
+ * <weight>: Use a value from 200 to 1000
+ */
+.zmuli {
+  font-family: "zmulish", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+.zmuli-thin {
+  font-family: "zmulish", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 100;
+  font-style: normal;
+}
+.zmuli-light {
+  font-family: "zmulish", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
+.zmuli-thick {
+    font-family: "zmulish", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+  }
+/** Lato, zlato */
+.zlato-thin {
+  font-family: "zlato-thin", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+}
+  
+.zlato-light {
+  font-family: "zlato-light", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+  
+.zlato {
+  font-family: "zlato", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
