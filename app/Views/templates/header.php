@@ -6,7 +6,7 @@
 	<!-- <link href="bootshkrap/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" /> -->
     <link href="bootstrap-yeti.min.css" rel="stylesheet" crossorigin="anonymous" />
 	<link href="styles.css" rel="stylesheet" crossorigin="anonymous" />
-	<title>NicoTracks by lowkey.link</title>
+	<title><?= env('app.siteName') ?> by lowkey.link</title>
     <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script> -->
     <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
     <!-- Error: This method is not implemented: Check that a complete date adapter is provided -->
@@ -96,4 +96,4 @@
             <div class="col-md-4"></div>
             <div class="col-md-4">
                 <div class="card m-4">
-                    <h3 class="card-header text-center">NicoTracks</h3>
+                    <h3 class="card-header text-center"><?= env('app.siteName') ?></h3>
