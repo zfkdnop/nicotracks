@@ -90,4 +90,34 @@ class UpdateDataController extends BaseController {
             . view('pages/data/update/success')
             . view('templates/success_footer');
     }
+
+    /************************************************************************
+     * DELETE
+     */
+
+     /**
+      * Perform deletion of a datapoint
+      * @var ?string $datapointID    the database table id of the entry to be deleted
+      */
+     public function deleteData(?string $datapointID): string {
+        if (is_numeric($datapointID) === false || intval($datapointID) < 0) return $this->listDataPoints();
+
+        $model = model($this->modelName);
+
+        try {
+            $model->delete(intval($datapointID));
+        } catch(\Exception $e) {//catch(CodeIgniter\Database\Exceptions\DatabaseException $e) {
+            $d = [
+                'title' => $e.getCode(),
+                'message' => $e.getMessage(),
+            ];
+            return view('errors/exception', $d);
+            // if (e.getCode() == 1062) exit('Duplicate entry: '.e.getMessage());
+            // else exit(e.getCode().': '.e.getMessage());
+        }
+
+        return view('templates/success_header')
+            . view('pages/data/delete/success')
+            . view('templates/success_footer');
+     }
 }

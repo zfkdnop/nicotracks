@@ -1,8 +1,9 @@
 <?= session()->getFlashdata('error') ?>
 <?= validation_list_errors() ?>
 
-<? /* <form action="<?= url_to('UpdateDataController::updateDataForm') ?>" method="post"> */ ?>
-<form method="post">
+<? /* <form action="<?= url_to('UpdateDataController::updateDataForm') ?>" method="post"> */// why doesnt this fuckin work?? ?>
+<!-- <form method="post"> -->
+<form action="<?= url_to('UpdateDataController::updateDataForm', $entry['id']) ?? null ?>" method="post">
     <?= csrf_field() ?>
 <div class="card-body">
     <h5 class="card-title text-center p-0 m-0"><?= esc($title) ?></h5>
@@ -60,5 +61,9 @@
 </ul>
 <div class="card-body text-center">
     <button class="btn btn-sm btn-primary py-0" type="submit">Update</button>
+    </form>
+    <form action="<?= url_to('UpdateDataController::deleteData', $entry['id'] ?? null) ?>" method="post">
+        <?= csrf_field() ?>
+        <button class="btn btn-sm btn-danger py-0" type="submit">Derete</button>
+    </form>
 </div>
-</form>

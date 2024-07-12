@@ -36,11 +36,12 @@ class DataPointModel extends Model {
     protected $allowedFields    = ['id', 'ts', 'mg', 'brand', 'ct', 'instance'];
 
     // Dates
-    protected $useTimestamps    = false;
-    protected $dateFormat       = 'datetime';   // Allowed: 'datetime', 'date', 'int'
-    protected $createdField     = 'ts';         // default: 'created_at'
-    protected $updatedField     = '';           // default: 'updated_at'
-    protected $deletedField     = '';           // default: 'deleted_at'
+    protected $useTimestamps    = true;
+    protected $useSoftDeletes   = true;         // set `$deletedField` to timestamp instead of deleting row from database; hard deletes are processed in batches at a later date
+    protected $dateFormat       = 'int';        // Allowed: 'datetime', 'date', 'int'
+    protected $createdField     = 'created_at'; // default: 'created_at'
+    protected $updatedField     = 'updated_at'; // default: 'updated_at'
+    protected $deletedField     = 'deleted_at'; // default: 'deleted_at'
 
     // Validation
     // protected $validationRules      = [];

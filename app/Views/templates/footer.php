@@ -2,10 +2,9 @@
                     <div class="d-flex justify-content-between">
                     <?php helper('isauth'); ?>
                     <? if (isAuth()): ?>
-                        <a href="<?= site_url('new') ?>" class="card-link link-underline link-underline-opacity-25 link-underline-opacity-50-hover">Add Datapoint</a>
-                        <a href="<?= site_url('update') ?>" class="card-link link-underline link-underline-opacity-25 link-underline-opacity-50-hover">Edit Datapoint</a>
-                        <a href="<?= site_url('delete') ?>" class="card-link link-underline link-underline-opacity-25 link-underline-opacity-50-hover">Delete Datapoint</a>
-                        <a href="<?= site_url('logout') ?>" class="card-link link-underline link-underline-opacity-25 link-underline-opacity-50-hover">Logout</a>
+                        <span><img src="/emptypad.png" class="uiico">&ensp;<a href="<?= site_url('new') ?>" class="card-link link-underline link-underline-opacity-25 link-underline-opacity-50-hover">Add Datapoint</a></span>
+                        <span><img src="/pad.png" class="uiico">&ensp;<a href="<?= site_url('update') ?>" class="card-link link-underline link-underline-opacity-25 link-underline-opacity-50-hover">Modify Datapoint</a></span>
+                        <span><img src="/msagent.png" class="uiico">&ensp;<a href="<?= site_url('logout') ?>" class="card-link link-underline link-underline-opacity-25 link-underline-opacity-50-hover">Logout</a></span>
                     <? else: ?>
                         <div class="d-inline-flex">&ensp;</div>
                         <div class="d-inline-flex">

@@ -18,19 +18,23 @@
             <th scope="col">mg</th>
             <th scope="col">brand</th>
             <th scope="col">count</th>
+            <th scope="col">&ensp;</th>
         </tr>
     </thead>
     <tbody>
     <? foreach($dataPoints['chartData'] as $point): ?>
         <tr>
             <td><a href="/update/<?= $point['id'] ?>" class="link-underline link-underline-opacity-25 link-underline-opacity-50-hover">
-                <span class="badge bg-info p-2">Edit</span>
+                <span class="badge bg-info p-1">Edit</span>
             </a></td>
             <th scope="row"><?= $point['id'] ?></th>
             <td><? echo Time::parse($point['ts'])->format('m-d-y H:i'); ?></td>
             <td><?= $point['mg'] ?></td>
             <td><?= $point['brand'] ?></td>
             <td><?= $point['ct'] ?></td>
+            <td><a href="/delete/<?= $point['id'] ?>" class="link-underline link-underline-opacity-25 link-underline-opacity-50-hover">
+                <span class="badge bg-danger p-1">Delete</span>
+            </a></td>
         </tr>
     <? endforeach ?>
     </tbody>

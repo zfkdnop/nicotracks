@@ -7,16 +7,18 @@ use CodeIgniter\Router\RouteCollection;
  */
 $routes->get('/new', 'NewDataController::newDataForm', ['filter' => ['authfilter', 'csrf']]);
 $routes->post('/new', 'NewDataController::newData', ['filter' => ['authfilter', 'csrf']]);
-// $routes->post('/api/new', 'APIController::newDataEndpoint');
 
 $routes->get('/update', 'UpdateDataController::listDataPoints', ['filter' => ['authfilter', 'csrf']]);
-$routes->get('/update/(:segment)', [\App\Controllers\UpdateDataController::class, 'updateDataForm'], ['filter' => ['authfilter', 'csrf']]);
-$routes->post('/update/(:segment)', [\App\Controllers\UpdateDataController::class, 'updateData'], ['filter' => ['authfilter', 'csrf']]);
-// $routes->post('/api/new', 'APIController::updateDataEndpoint');
+// $routes->get('/update/(:segment)', [\App\Controllers\UpdateDataController::class, 'updateDataForm'], ['filter' => ['authfilter', 'csrf']]);
+// $routes->post('/update/(:segment)', [\App\Controllers\UpdateDataController::class, 'updateData'], ['filter' => ['authfilter', 'csrf']]);
+$routes->get('/update/(:segment)', 'UpdateDataController::updateDataForm/$1', ['filter' => ['authfilter', 'csrf']]);
+$routes->post('/update/(:segment)', 'UpdateDataController::updateData/$1', ['filter' => ['authfilter', 'csrf']]);
 
-$routes->get('/delete', 'DeleteDataController::deleteDataForm', ['filter' => ['authfilter', 'csrf']]);
-$routes->post('/delete', 'DeleteDataController::deleteData', ['filter' => ['authfilter', 'csrf']]);
-// $routes->post('/api/new', 'APIController::deleteDataEndpoint');
+// $routes->get('/delete/(:segment)', [\App\Controllers\DeleteDataController::class, 'deleteDataForm'], ['filter' => ['authfilter', 'csrf']]);
+// $routes->post('/delete/(:segment)', [\App\Controllers\DeleteDataController::class, 'deleteData'], ['filter' => ['authfilter', 'csrf']]);
+$routes->get('/delete', 'UpdateDataController::listDataPoints', ['filter' => ['authfilter', 'csrf']]);
+// $routes->get('/delete/(:segment)', 'UpdateDataController::updateDataForm/$1', ['filter' => ['authfilter', 'csrf']]);
+$routes->post('/delete/(:segment)', 'UpdateDataController::deleteData/$1', ['filter' => ['authfilter', 'csrf']]);
 
 $routes->get('/login', 'AuthLoginController::loginForm', ['filter' => ['csrf']]);
 $routes->post('/login', 'AuthLoginController::login', ['filter' => ['csrf']]);
