@@ -25,14 +25,9 @@ class AuthLoginController extends BaseController {
     // Perform login functions & interact with database
     public function login(): string {
         // TODO: implement rate-limiting
-        $algo = 'sha256';
-        $cost = 14;
-        // $pw = '';
-        // $testhash = hash_hmac($algo, 'fakepw', 'fakesalt'); // determine the strlen of this algo's hashes
-        // $salt = random_bytes(strlen($testhash)); // make the salt equal in length to the prehash length
-        // password_hash(hash_hmac($algo, $pw, $salt), PASSWORD_BCRYPT, ['cost' => $cost])
-
         $usersModel  = model($this->usersModel);
+        $algo = $usersModel->hashAlgo;
+        $cost = 14;
 
         // get raw inputs & validate/sanitize
         $inputs = $this->request->getPost(['username', 'passwd']);
@@ -52,7 +47,6 @@ class AuthLoginController extends BaseController {
                     'userid'    => $userRow['id'],
                     'token'     => hash_hmac($algo, implode('+', $userRow).'+'.(new Time())->getTimestamp(), $userRow['salt']),
                     'ip'        => $this->request->getIPAddress(),
-                    // 'deleted_at'=> (Time::parse('+24 hours'))->getTimestamp(),
                 ];
                 $sessModel->save($newSess); // insert new session into `sessions` table
                 $s = session();

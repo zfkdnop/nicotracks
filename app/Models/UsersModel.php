@@ -55,6 +55,8 @@ class UsersModel extends Model {
     // protected $afterFind        = [];
     // protected $beforeDelete     = [];
     // protected $afterDelete      = [];
+    protected $hashAlgo         = 'sha256';
+    protected $cryptCost        = 14;   // ~0.660s
 
     /**
      * username     - alpha-numeric, max 16 chars, may contain _ and -, cannot start or end with _ or -
