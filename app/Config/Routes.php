@@ -11,7 +11,8 @@ $routes->post('/new', 'NewDataController::newData', ['filter' => ['authfilter', 
 
 $routes->get('/update', 'UpdateDataController::listDataPoints', ['filter' => ['authfilter', 'csrf']]);
 $routes->post('/update', 'UpdateDataController::updateData', ['filter' => ['authfilter', 'csrf']]);
-$routes->get('/update/(:segment)', 'UpdateDataController::updateDataForm', ['filter' => ['authfilter', 'csrf']]);
+$routes->get('/update/(:segment)', [\App\Controllers\UpdateDataController::class, 'updateDataForm'], ['filter' => ['authfilter', 'csrf']]);
+$routes->post('/update/(:segment)', [\App\Controllers\UpdateDataController::class, 'updateData'], ['filter' => ['authfilter', 'csrf']]);
 // $routes->post('/api/new', 'APIController::updateDataEndpoint');
 
 $routes->get('/delete', 'DeleteDataController::deleteDataForm', ['filter' => ['authfilter', 'csrf']]);

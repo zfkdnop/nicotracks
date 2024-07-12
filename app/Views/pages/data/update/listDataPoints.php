@@ -12,23 +12,25 @@
 <table class="table table-sm table-hover table-striped user-select-none">
     <thead>
         <tr>
+            <th scope="col">&ensp;</th>
             <th scope="col">id</th>
             <th scope="col">timestamp</th>
             <th scope="col">mg</th>
             <th scope="col">brand</th>
             <th scope="col">count</th>
-            <th scope="col">instance</th>
         </tr>
     </thead>
     <tbody>
     <? foreach($dataPoints['chartData'] as $point): ?>
         <tr>
+            <td><a href="/update/<?= $point['id'] ?>" class="link-underline link-underline-opacity-25 link-underline-opacity-50-hover">
+                <span class="badge bg-info p-2">Edit</span>
+            </a></td>
             <th scope="row"><?= $point['id'] ?></th>
-            <td><? echo Time::parse($point['ts'])->toDateTimeString(); ?></td>
+            <td><? echo Time::parse($point['ts'])->format('m-d-y H:i'); ?></td>
             <td><?= $point['mg'] ?></td>
             <td><?= $point['brand'] ?></td>
             <td><?= $point['ct'] ?></td>
-            <td><?= $point['instance'] ?></td>
         </tr>
     <? endforeach ?>
     </tbody>
