@@ -59,7 +59,12 @@
 </ul>
 <div class="card-body text-center">
     <button class="btn btn-sm btn-primary py-0" type="submit">Add</button>
-    <!-- <a href="#" class="card-link link-underline link-underline-opacity-25 link-underline-opacity-50-hover">Card link</a>
-    <a href="#" class="card-link link-underline link-underline-opacity-25 link-underline-opacity-50-hover">Another link</a> -->
+    </form>
 </div>
-</form>
+<div class="card-body text-center pt-0">
+    <form action="<?= url_to('NewDataController::quickAddZyn3') ?>" method="post"><?= csrf_field() ?><button class="btn btn-sm btn-primary py-0" type="submit">Quick-add Zyn 3mg</button></form>
+    <form action="<?= url_to('NewDataController::quickAddZyn6') ?>" method="post"><?= csrf_field() ?><button class="btn btn-sm btn-primary py-0" type="submit">Quick-add Zyn 6mg</button></form>
+    <form action="<?= url_to('NewDataController::quickAddOn8') ?>" method="post"><?= csrf_field() ?><button class="btn btn-sm btn-primary py-0" type="submit">Quick-add On 8mg</button></form>
+    <form action="<?= url_to('NewDataController::quickAddGum2') ?>" method="post"><?= csrf_field() ?><button class="btn btn-sm btn-primary py-0" type="submit">Quick-add Gum 2mg</button></form>
+    <form action="<?= url_to('NewDataController::quickAddGum4') ?>" method="post"><?= csrf_field() ?><button class="btn btn-sm btn-primary py-0" type="submit">Quick-add Gum 4mg</button></form>
+</div>

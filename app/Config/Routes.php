@@ -7,6 +7,11 @@ use CodeIgniter\Router\RouteCollection;
  */
 $routes->get('/new', 'NewDataController::newDataForm', ['filter' => ['authfilter', 'csrf']]);
 $routes->post('/new', 'NewDataController::newData', ['filter' => ['authfilter', 'csrf']]);
+$routes->post('/new/qz3', 'NewDataController::quickAddZyn3', ['filter' => ['authfilter', 'csrf']]);
+$routes->post('/new/qz6', 'NewDataController::quickAddZyn6', ['filter' => ['authfilter', 'csrf']]);
+$routes->post('/new/qg2', 'NewDataController::quickAddGum2', ['filter' => ['authfilter', 'csrf']]);
+$routes->post('/new/qg4', 'NewDataController::quickAddGum4', ['filter' => ['authfilter', 'csrf']]);
+$routes->post('/new/qo8', 'NewDataController::quickAddOn8', ['filter' => ['authfilter', 'csrf']]);
 
 $routes->get('/update', 'UpdateDataController::listDataPoints', ['filter' => ['authfilter', 'csrf']]);
 // $routes->get('/update/(:segment)', [\App\Controllers\UpdateDataController::class, 'updateDataForm'], ['filter' => ['authfilter', 'csrf']]);
