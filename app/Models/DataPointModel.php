@@ -74,16 +74,26 @@ class DataPointModel extends Model {
     /**
      * Return nicotine data from database which was inserted after $startDate (default '30 days ago')
      * A Time-parsable string should be used
-     * @var ?string
+     * @var ?string $orderby    ASC or DESC
+     * @var ?string $startDate  UNIX timestamp of date from which to gather data
+     * @return array with results or null if nothing found
      */
-    public function getDataSinceTimestamp(?string $startDate = null): array {
+    public function getDataSinceTimestamp(?string $orderby = 'ASC', ?string $startDate = null): array|null {
         // if no startDate is defined, default to a startDate of "the date 30 days before today"
-        if (!$startDate) $tsStart = Time::parse('30 days ago')->getTimestamp();
+        if (!isset($startDate)) $tsStart = Time::parse('30 days ago')->getTimestamp();
         else $tsStart = Time::parse($startDate)->getTimestamp();
 
-        return ['chartData' => $this->where('UNIX_TIMESTAMP(ts) >', $tsStart)->orderBy('UNIX_TIMESTAMP(ts)', 'ASC')->findAll(),
+        return ['chartData' => $this->where('UNIX_TIMESTAMP(ts) >', $tsStart)->orderBy('UNIX_TIMESTAMP(ts)', $orderby)->findAll(),
                 'showCharts' => 1,
                 ];
     }
 
+    public function paginateDataSinceTimestamp(?int $limit = 15, ?string $orderby = 'DESC', ?string $startDate = null): array|null {
+        if (!isset($startDate)) $tsStart = Time::parse('30 days ago')->getTimestamp();
+        else $tsStart = Time::parse($startDate)->getTimestamp();
+
+        return ['chartData' => $this->where('UNIX_TIMESTAMP(ts) >', $tsStart)->orderBy('UNIX_TIMESTAMP(ts)', $orderby)->paginate($limit <= 1 ? 10 : $limit),
+                'showCharts' => 1,
+                ];
+    }
 }

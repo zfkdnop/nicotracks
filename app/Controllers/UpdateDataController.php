@@ -6,14 +6,25 @@ use App\Models\DataPointModel;
 
 class UpdateDataController extends BaseController {
     protected $modelName    = 'App\Models\DataPointModel';
+    protected $helpers      = ['form'];
+    protected $pageTitle    = 'Edit Datapoint';
 
     // HTML interface to edit/update an existing datapoint in the DB
+    public function listDataPoints(): string {
+        $model = model($this->modelName);
+        $d = [
+            'title'         => $this->pageTitle,
+            'dataPoints'    => $model->paginateDataSinceTimestamp(15, 'DESC', '30 days ago'),
+            'pager'         => $model->pager,
+        ];
+
+        return view('templates/header')
+                . view('pages/data/update/listDataPoints', $d)
+                . view('templates/footer', $d['dataPoints']);
+    }
+
     public function updateDataForm(): string {
-        // helper('form');
-        // // $d = ['title' => 'Edit Datapoint'];
-        // return view('templates/header')
-        //         . view('pages/data/update/index', ['title' => 'Edit Datapoint'])
-        //         . view('templates/footer');
+        //
     }
 
     /** Update datapoint in database
