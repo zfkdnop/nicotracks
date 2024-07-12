@@ -1,5 +1,5 @@
 <div class="d-flex justify-content-center mt-8">
-    <div class="d-inline-flex  w-25">
+    <div class="d-inline-flex w-25">
         <canvas id="canvasUOT"></canvas>
     </div>
     <div class="d-inline-flex w-25">
