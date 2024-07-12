@@ -2,12 +2,14 @@
 namespace App\Controllers;
 
 use App\Models\DataPointModel;
-// use CodeIgniter\I18n\Time;
+use CodeIgniter\I18n\Time;
 
 class UpdateDataController extends BaseController {
     protected $modelName    = 'App\Models\DataPointModel';
     protected $helpers      = ['form'];
     protected $pageTitle    = 'Edit Datapoint';
+    protected $fBrowserDate = 'Y-m-d';
+    protected $fBrowserTime = 'H:i';
 
     // HTML interface to edit/update an existing datapoint in the DB
     public function listDataPoints(): string {
@@ -28,10 +30,19 @@ class UpdateDataController extends BaseController {
      * @var ?string $datapointID    the database table id of the entry to be edited
      */
     public function updateDataForm(?string $datapointID): string {
-        if (is_numeric($datapointID) === false) return $this->listDataPoints();
-        $d = [
-            'title' => 'Editing entry #'.intval($datapointID),
+        if (is_numeric($datapointID) === false || intval($datapointID) < 0) return $this->listDataPoints();
 
+        $model = model($this->modelName);
+        $entry = $model->getDatapointById(intval($datapointID));
+
+        if ($entry !== null && isset($entry['ts'])) {
+            $entry['date'] = Time::parse($entry['ts'])->format($this->fBrowserDate);
+            $entry['time'] = Time::parse($entry['ts'])->format($this->fBrowserTime);
+            unset($entry['ts']);
+        }
+        $d = [
+            'title' => 'Editing entry #'.$datapointID,
+            'entry' => $entry,
         ];
         return view('templates/header')
             . view('pages/data/update/updateDataForm', $d)
@@ -39,11 +50,10 @@ class UpdateDataController extends BaseController {
     }
 
     /** Update datapoint in database
+     * @var ?string $datapointID    the database table id of the entry to be edited
      */
-    public function updateData(): string {
-        return view('templates/header')
-            . view('pages/data/new/success')
-            . view('templates/footer');
+    public function updateData(?string $datapointID): string {
+        if (is_numeric($datapointID) === false || intval($datapointID) < 0) return $this->listDataPoints();
 
         $model = model($this->modelName);
 
@@ -58,12 +68,12 @@ class UpdateDataController extends BaseController {
 
         $ts = new Time($post['date'].' '.$post['time']);        
         try {
-            $model->save([
+            $model->update(intval($datapointID), [
                 'ts' => $ts->toDateTimeString(),
                 'mg' => $post['mg'] ?? 6,
                 'brand' => $post['brand'] ?? 'Zyn',
                 'ct' => $post['ct'] ?? 1,
-                'instance' => implode('+', $post),
+                // 'instance' => implode('+', $post),
                 // ^^ since instance was defined as an special datatype in the model it should use our typecaster class to appropriately convert this string
             ]);
         } catch(\Exception $e) {//catch(CodeIgniter\Database\Exceptions\DatabaseException $e) {
@@ -76,8 +86,8 @@ class UpdateDataController extends BaseController {
             // else exit(e.getCode().': '.e.getMessage());
         }
 
-        return view('templates/header')
-            . view('pages/data/new/success')
-            . view('templates/footer');
+        return view('templates/success_header')
+            . view('pages/data/update/success')
+            . view('templates/success_footer');
     }
 }

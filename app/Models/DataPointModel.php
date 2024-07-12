@@ -17,7 +17,6 @@ use CodeIgniter\I18n\Time;
 class DataPointModel extends Model {
     protected $table            = 'nic';
     protected $primaryKey       = 'id';
-
     protected $useAutoIncrement = true;
 
     //protected $returnType = 'array';  // default: 'array'
@@ -72,6 +71,10 @@ class DataPointModel extends Model {
     ];
 
     /**
+     * TODO: refactor such that this function returns only data from the table
+     * The controller should be putting that data into an array/object and adding other stuff to it (ie: showCharts)
+     */
+    /**
      * Return nicotine data from database which was inserted after $startDate (default '30 days ago')
      * A Time-parsable string should be used
      * @var ?string $orderby    ASC or DESC
@@ -88,6 +91,10 @@ class DataPointModel extends Model {
                 ];
     }
 
+    /**
+     * TODO: refactor such that this function returns only data from the table
+     * The controller should be putting that data into an array/object and adding other stuff to it (ie: showCharts)
+     */
     public function paginateDataSinceTimestamp(?int $limit = 15, ?string $orderby = 'DESC', ?string $startDate = null): array|null {
         if (!isset($startDate)) $tsStart = Time::parse('30 days ago')->getTimestamp();
         else $tsStart = Time::parse($startDate)->getTimestamp();
@@ -95,5 +102,14 @@ class DataPointModel extends Model {
         return ['chartData' => $this->where('UNIX_TIMESTAMP(ts) >', $tsStart)->orderBy('UNIX_TIMESTAMP(ts)', $orderby)->paginate($limit <= 1 ? 10 : $limit),
                 'showCharts' => 1,
                 ];
+    }
+
+    /**
+     * Return a single datapoint
+     * @var ?int $id    The table ID of the datapoint
+     */
+    public function getDatapointById(?int $id = null): array|null {
+        if ($id === null || $id < 0) return null;
+        return $this->where('id', $id)->first();
     }
 }

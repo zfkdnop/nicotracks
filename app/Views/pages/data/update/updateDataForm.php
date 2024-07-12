@@ -1,7 +1,8 @@
 <?= session()->getFlashdata('error') ?>
 <?= validation_list_errors() ?>
 
-<form action="<?= url_to('NewDataController::newDataForm') ?>" method="post">
+<? /* <form action="<?= url_to('UpdateDataController::updateDataForm') ?>" method="post"> */ ?>
+<form method="post">
     <?= csrf_field() ?>
 <div class="card-body">
     <h5 class="card-title text-center p-0 m-0"><?= esc($title) ?></h5>
@@ -15,13 +16,13 @@
             <div class="col-4">
                 <span class="card-text text-muted">
                     <label for="date">Date</label>
-                    <input type="date" name="date" id="date" value="<?= set_value('date') ?>" />
+                    <input type="date" name="date" id="date" value="<?= $entry['date'] ?>" />
                 </span>
             </div>
             <div class="col-4">
                 <span class="card-text text-muted">
                     <label for="time">Time</label>
-                    <input type="time" name="time" id="time" value="<?= set_value('time') ?>" />
+                    <input type="time" name="time" id="time" value="<?= $entry['time'] ?>" />
                 </span>
             </div>
         </div>
@@ -32,7 +33,7 @@
                 <label for="mg" class="">Dose (mg)</label>
             </div>
             <div class="col-8">
-                <input type="text" name="mg" value="<?= set_value('mg') ?>" placeholder="6" />
+                <input type="text" name="mg" value="<?= $entry['mg'] ?>" placeholder="6" />
             </div>
         </div>
     </li>
@@ -42,7 +43,7 @@
                 <label for="brand" class="">Brand</label>
             </div>
             <div class="col-8">
-                <input type="text" name="brand" value="<?= set_value('brand') ?>"  placeholder="Zyn" />
+                <input type="text" name="brand" value="<?= $entry['brand'] ?>"  placeholder="Zyn" />
             </div>
         </div>
     </li>
@@ -52,7 +53,7 @@
                 <label for="ct" class="">Count</label>
             </div>
             <div class="col-8">
-                <input type="text" name="ct" value="<?= set_value('ct') ?>" placeholder="1" />
+                <input type="text" name="ct" value="<?= $entry['ct'] ?>" placeholder="1" />
             </div>
         </div>
     </li>

@@ -53,8 +53,8 @@ class NewDataController extends BaseController {
             // else exit(e.getCode().': '.e.getMessage());
         }
 
-        return view('templates/header')
+        return view('templates/success_header')
             . view('pages/data/new/success')
-            . view('templates/footer');
+            . view('templates/success_footer');
     }
 }

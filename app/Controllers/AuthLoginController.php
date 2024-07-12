@@ -64,9 +64,9 @@ class AuthLoginController extends BaseController {
             } else return $this->index();
         } else return $this->index();
 
-        return view('templates/header')
+        return view('templates/success_header')
             . view('pages/auth/login/success')
-            . view('templates/footer');
+            . view('templates/success_footer');
     }
 
     public function logout(): string {
@@ -90,8 +90,8 @@ class AuthLoginController extends BaseController {
             $model->where('token', $auth)->delete();
         }
 
-        return view('templates/header')
+        return view('templates/success_header')
             . view('pages/auth/login/success')
-            . view('templates/footer');
+            . view('templates/success_footer');
     }
 }
