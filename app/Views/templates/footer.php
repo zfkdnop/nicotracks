@@ -8,7 +8,7 @@
                     <? else: ?>
                         <div class="d-inline-flex">&ensp;</div>
                         <div class="d-inline-flex">
-                            <a href="<?= site_url('login') ?>" class="card-link link-underline link-underline-opacity-25 link-underline-opacity-50-hover">Login</a>
+                            <span><img src="/userskey.png" class="uiico">&ensp;<a href="<?= site_url('login') ?>" class="card-link link-underline link-underline-opacity-25 link-underline-opacity-50-hover">Login</a></span>
                         </div>
                         <div class="d-inline-flex">&ensp;</div>
                         <!-- <div class="d-inline-flex align-content-start">
