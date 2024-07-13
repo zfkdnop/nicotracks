@@ -29,7 +29,7 @@ class UsersModel extends Model {
                                         // 'blowfish' => \App\Models\TypeCasters\CastBlowfish::class,
                                     ];
 
-    protected $allowedFields    = ['id', 'username', 'displayname', 'passwd', 'usergroup'];
+    protected $allowedFields    = ['id', 'username', 'displayname', 'passwd', 'salt', 'usergroup'];
 
     // Dates
     protected $useTimestamps    = true;

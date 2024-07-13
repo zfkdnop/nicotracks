@@ -10,6 +10,11 @@ class SchemaSeeder extends Seeder {
      */
     public function run() {
         $seeder = \Config\Database::seeder();
+        $forge = \Config\Database::forge();
+
+        log_message('info', 'Creating database (if needed) as defined in .env: '.env('database.default.database'));
+        $forge->createDatabase(env('database.default.database'), true);
+
         $seeder->call('App\Database\Seeds\schema\UsersSeeder');
         $seeder->call('App\Database\Seeds\schema\SessionsSeeder');
         $seeder->call('App\Database\Seeds\schema\NicSeeder');
