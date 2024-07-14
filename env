@@ -21,11 +21,11 @@ CI_ENVIRONMENT = development
 ## APP
 ##--------------------------------------------------------------------
 
-app.baseURL			= 'https://app.domain.tld/'
-app.indexPage		= ''
-app.appTimezone		= 'Asia/Singapore'
-app.charset			= 'UTF-8'
-app.siteName		= 'NicoTracks'
+app.baseURL            = 'https://app.domain.tld/'
+app.indexPage        = ''
+app.appTimezone        = 'Asia/Singapore'
+app.charset            = 'UTF-8'
+app.siteName        = 'NicoTracks'
 
 ##---- App portability ----------------------------------------------
 ## * Prerequisite: The current location of the app is not permanent
@@ -39,26 +39,26 @@ app.siteName		= 'NicoTracks'
 ## the app's real [relative] location here so that the routes will
 ## continue to work without updating them in code.
 ## Include leading slash; exclude trailing slash.
-#app.subBase				= '/example/real/location/of/my/app'
-#app.subBase				= '/nicotracks'
-## eg:	* App routes are looking for '/api/example/(:segment)' etc
-##		 * App resides at /var/www/domain.tld/docroot/myapp/ (and perhaps it will move in future) 
-##			ie : /var/www/domain.tld/docroot/myapp/public/
-##		 * Webserver docroot is defined as /var/www/domain.tld/docroot
-##		 * You can set this to the location of your app's
-##			root folder (not /public folder) relvative to the webserver docroot
+#app.subBase                = '/example/real/location/of/my/app'
+#app.subBase                = '/nicotracks'
+## eg:    * App routes are looking for '/api/example/(:segment)' etc
+##         * App resides at /var/www/domain.tld/docroot/myapp/ (and perhaps it will move in future) 
+##            ie : /var/www/domain.tld/docroot/myapp/public/
+##         * Webserver docroot is defined as /var/www/domain.tld/docroot
+##         * You can set this to the location of your app's
+##            root folder (not /public folder) relvative to the webserver docroot
 ## NOTE: This isnt magic. See routes.php. idk why i just spent 5 minutes
 ## writing this out when I could have just updated the routes...
 ## I'm sure this only makes sense to me.
 ##
 ## NOTE: If you understand whats going on here and have a better
-##	(read: "more normal" or "more professional") way to resolve this,
-##	please enlighten me via electronic mail: nicotracks_wtf lowkey link
-##		 https://www.youtube.com/watch?v=1z-pVZiRjac
+##    (read: "more normal" or "more professional") way to resolve this,
+##    please enlighten me via electronic mail: nicotracks_wtf lowkey link
+##         https://www.youtube.com/watch?v=1z-pVZiRjac
 ##
 ## also: just editing app.baseURL to the appropriate location
-##	(ie: app.baseURL='www.domain.tld/thereal/approot/location/') didn't
-##	seem to work for me...
+##    (ie: app.baseURL='www.domain.tld/thereal/approot/location/') didn't
+##    seem to work for me...
 
 ##--------------------------------------------------------------------
 ## NGINX
@@ -68,28 +68,27 @@ app.siteName		= 'NicoTracks'
 ## tests, vendor, and writable.
 ## Or it might break your site. I'm really bad at nginx configs
 # 
-#	location ~* ^/(app|public|tests|vendor|writable)(/|$) { return 404; }
-#	location ~* ^/n/(app|public|tests|vendor|writable)(/|$) { return 404; }
+#    location ~* ^/(app|public|tests|vendor|writable)(/|$) { return 404; }
+#    location ~* ^/n/(app|public|tests|vendor|writable)(/|$) { return 404; }
 #
-#	location ~ /myreal/approot/location {
-#		alias /home/domainuser/sub.domain.tld/public/;
+#    location ~ /myreal/approot/location {
+#        alias /home/domainuser/sub.domain.tld/public/;
 #
-#		location ~ [^/]\.php(/|$) {
-#			rewrite ^/myreal/approot/location/(.*)$ /$1 break;
-#			alias /home/domainuser/sub.domain.tld/public/;
-#			include /etc/nginx/fastcgi.conf;
-#			if (!-f $document_root$fastcgi_script_name) { return  404; }
-#			fastcgi_pass	unix:/usr/var/php-fpm/domainuser.sock;
-#			fastcgi_index   index.php;
-#		}
-#	}
-#	location ~ [^/]\.php(/|$) {
-#		include /etc/nginx/fastcgi.conf;
-#		if (!-f $document_root$fastcgi_script_name) { return  404; }
-#		fastcgi_pass	unix:/usr/var/php-fpm/domainuser.sock;
-#		fastcgi_index   index.php;
-#	}
-
+#        location ~ [^/]\.php(/|$) {
+#            rewrite ^/myreal/approot/location/(.*)$ /$1 break;
+#            alias /home/domainuser/sub.domain.tld/public/;
+#            include /etc/nginx/fastcgi.conf;
+#            if (!-f $document_root$fastcgi_script_name) { return  404; }
+#            fastcgi_pass    unix:/usr/var/php-fpm/domainuser.sock;
+#            fastcgi_index   index.php;
+#        }
+#    }
+#    location ~ [^/]\.php(/|$) {
+#        include /etc/nginx/fastcgi.conf;
+#        if (!-f $document_root$fastcgi_script_name) { return  404; }
+#        fastcgi_pass    unix:/usr/var/php-fpm/domainuser.sock;
+#        fastcgi_index   index.php;
+#    }
 
 ##--------------------------------------------------------------------
 ## DATABASE
@@ -127,36 +126,36 @@ database.DBCollat = utf8mb4_general_ci
 ## SESSION
 ##--------------------------------------------------------------------
 ## NOTE: If you dont use Redis you should be able to just comment out
-##	 everything below this line within this section.
+##     everything below this line within this section.
 ## Also, I don't know if all of these settings are sensible. I'm new here Q_Q
 
 ## session.driver = 'CodeIgniter\Session\Handlers\FileHandler'
 ## session.savePath = null
 
 ## default CodeIgniter\Session\Handlers\FileHandler
-session.driver			= 'CodeIgniter\Session\Handlers\RedisHandler'
+session.driver            = 'CodeIgniter\Session\Handlers\RedisHandler'
 ## default 7200  ##  172800s = 48h  ##  time until session expires/resets
-session.expiration		= 172800
+session.expiration        = 172800
 ## default 300 (5min)  ##  43200=12hr
-session.timeToUpdate	= 300
+session.timeToUpdate    = 300
 ## default false  ##  when regen'ing sess IDs, destroy sess data associated w/ the old sess ID ## EDIT: this isnt what I thought... the new sess is empty upon regen: changed back to false
 session.regenerateDestroy = false
 #### Redis-specific configs
-session.savePath		= 'unix:///var/lib/redis/redis.sock?database=1&persistent=1&timeout=0.0&auth=LFOFD!SNEK?NO.STEP!abe'
+session.savePath        = 'unix:///var/lib/redis/redis.sock?database=1&persistent=1&timeout=0.0&auth=LFOFD!SNEK?NO.STEP!abe'
 ## default 100_000
 session.lockRetryInterval = 100_000
 ## default 300
-session.lockMaxRetries	= 300
+session.lockMaxRetries    = 300
 
 #### Cookie handler - default cookie values
 ####----------------------------------------------------------------
-cookie.prefix		= 'lk_nicotracks_'
-##cookie.expires		= '0'	# needs to be set by the app using a Date/Time class (ie: "30 days from now" or "+30 days")
-cookie.path			= '/'
-cookie.domain		= ''
-cookie.secure		= true
-cookie.httponly		= false
-##cookie.samesite	= 'Lax'
+cookie.prefix        = 'lk_nicotracks_'
+##cookie.expires        = '0'    # needs to be set by the app using a Date/Time class (ie: "30 days from now" or "+30 days")
+cookie.path            = '/'
+cookie.domain        = ''
+cookie.secure        = true
+cookie.httponly        = false
+##cookie.samesite    = 'Lax'
 
 
 #--------------------------------------------------------------------
