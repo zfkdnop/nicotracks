@@ -5,35 +5,35 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
-$routes->get('/new', 'NewDataController::newDataForm', ['filter' => ['authfilter', 'csrf']]);
-$routes->post('/new', 'NewDataController::newData', ['filter' => ['authfilter', 'csrf']]);
-$routes->post('/new/qz3', 'NewDataController::quickAddZyn3', ['filter' => ['authfilter', 'csrf']]);
-$routes->post('/new/qz6', 'NewDataController::quickAddZyn6', ['filter' => ['authfilter', 'csrf']]);
-$routes->post('/new/qg2', 'NewDataController::quickAddGum2', ['filter' => ['authfilter', 'csrf']]);
-$routes->post('/new/qg4', 'NewDataController::quickAddGum4', ['filter' => ['authfilter', 'csrf']]);
-$routes->post('/new/qo8', 'NewDataController::quickAddOn8', ['filter' => ['authfilter', 'csrf']]);
+$routes->get(env('app.subBase').'/new', 'NewDataController::newDataForm', ['filter' => ['authfilter', 'csrf']]);
+$routes->post(env('app.subBase').'/new', 'NewDataController::newData', ['filter' => ['authfilter', 'csrf']]);
+$routes->post(env('app.subBase').'/new/qz3', 'NewDataController::quickAddZyn3', ['filter' => ['authfilter', 'csrf']]);
+$routes->post(env('app.subBase').'/new/qz6', 'NewDataController::quickAddZyn6', ['filter' => ['authfilter', 'csrf']]);
+$routes->post(env('app.subBase').'/new/qg2', 'NewDataController::quickAddGum2', ['filter' => ['authfilter', 'csrf']]);
+$routes->post(env('app.subBase').'/new/qg4', 'NewDataController::quickAddGum4', ['filter' => ['authfilter', 'csrf']]);
+$routes->post(env('app.subBase').'/new/qo8', 'NewDataController::quickAddOn8', ['filter' => ['authfilter', 'csrf']]);
 
-$routes->get('/update', 'UpdateDataController::listDataPoints', ['filter' => ['authfilter', 'csrf']]);
-// $routes->get('/update/(:segment)', [\App\Controllers\UpdateDataController::class, 'updateDataForm'], ['filter' => ['authfilter', 'csrf']]);
-// $routes->post('/update/(:segment)', [\App\Controllers\UpdateDataController::class, 'updateData'], ['filter' => ['authfilter', 'csrf']]);
-$routes->get('/update/(:segment)', 'UpdateDataController::updateDataForm/$1', ['filter' => ['authfilter', 'csrf']]);
-$routes->post('/update/(:segment)', 'UpdateDataController::updateData/$1', ['filter' => ['authfilter', 'csrf']]);
+$routes->get(env('app.subBase').'/update', 'UpdateDataController::listDataPoints', ['filter' => ['authfilter', 'csrf']]);
+// $routes->get(env('app.subBase').'/update/(:segment)', [\App\Controllers\UpdateDataController::class, 'updateDataForm'], ['filter' => ['authfilter', 'csrf']]);
+// $routes->post(env('app.subBase').'/update/(:segment)', [\App\Controllers\UpdateDataController::class, 'updateData'], ['filter' => ['authfilter', 'csrf']]);
+$routes->get(env('app.subBase').'/update/(:segment)', 'UpdateDataController::updateDataForm/$1', ['filter' => ['authfilter', 'csrf']]);
+$routes->post(env('app.subBase').'/update/(:segment)', 'UpdateDataController::updateData/$1', ['filter' => ['authfilter', 'csrf']]);
 
-// $routes->get('/delete/(:segment)', [\App\Controllers\DeleteDataController::class, 'deleteDataForm'], ['filter' => ['authfilter', 'csrf']]);
-// $routes->post('/delete/(:segment)', [\App\Controllers\DeleteDataController::class, 'deleteData'], ['filter' => ['authfilter', 'csrf']]);
-$routes->get('/delete', 'UpdateDataController::listDataPoints', ['filter' => ['authfilter', 'csrf']]);
-// $routes->get('/delete/(:segment)', 'UpdateDataController::updateDataForm/$1', ['filter' => ['authfilter', 'csrf']]);
-$routes->post('/delete/(:segment)', 'UpdateDataController::deleteData/$1', ['filter' => ['authfilter', 'csrf']]);
+// $routes->get(env('app.subBase').'/delete/(:segment)', [\App\Controllers\DeleteDataController::class, 'deleteDataForm'], ['filter' => ['authfilter', 'csrf']]);
+// $routes->post(env('app.subBase').'/delete/(:segment)', [\App\Controllers\DeleteDataController::class, 'deleteData'], ['filter' => ['authfilter', 'csrf']]);
+$routes->get(env('app.subBase').'/delete', 'UpdateDataController::listDataPoints', ['filter' => ['authfilter', 'csrf']]);
+// $routes->get(env('app.subBase').'/delete/(:segment)', 'UpdateDataController::updateDataForm/$1', ['filter' => ['authfilter', 'csrf']]);
+$routes->post(env('app.subBase').'/delete/(:segment)', 'UpdateDataController::deleteData/$1', ['filter' => ['authfilter', 'csrf']]);
 
-$routes->get('/login', 'AuthLoginController::loginForm', ['filter' => ['csrf']]);
-$routes->post('/login', 'AuthLoginController::login', ['filter' => ['csrf']]);
-$routes->get('/logout', 'AuthLoginController::logout', ['filter' => ['csrf']]);
+$routes->get(env('app.subBase').'/login', 'AuthLoginController::loginForm', ['filter' => ['csrf']]);
+$routes->post(env('app.subBase').'/login', 'AuthLoginController::login', ['filter' => ['csrf']]);
+$routes->get(env('app.subBase').'/logout', 'AuthLoginController::logout', ['filter' => ['csrf']]);
 
-$routes->get('/error', 'ErrorsController::index');
-$routes->post('/error', 'ErrorsController::index');
+$routes->get(env('app.subBase').'/error', 'ErrorsController::index');
+$routes->post(env('app.subBase').'/error', 'ErrorsController::index');
 
-$routes->get('/', 'HomeController::home', ['filter' => ['csrf']]);
-$routes->post('/', 'HomeController::home', ['filter' => ['csrf']]);
+$routes->get(env('app.subBase').'/', 'HomeController::home', ['filter' => ['csrf']]);
+$routes->post(env('app.subBase').'/', 'HomeController::home', ['filter' => ['csrf']]);
 
 /**
  * Default placeholders
